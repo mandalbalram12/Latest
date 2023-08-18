@@ -34,5 +34,6 @@ exports.loginPage= class loginPage{
     async userLogout(){
         await this.logOutUser.click();
         console.log('User Logged Out');
+        console.log('This test case is running successfully');
     }
 }

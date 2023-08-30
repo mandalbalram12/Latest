@@ -1,42 +1,59 @@
-const { expect } = require('@playwright/test');
-exports.homePage= class homePage{
+import { expect } from '@playwright/test';
+class homePage{
     constructor(page){
+
+        //Elements Locator available in Home Page
         this.page = page;
-        this.homebtn = page.getByRole('link',{name:' Home'});
-        this.productbtn = page.getByRole('link',{name:' Products'});
-        this.cartbtn = page.getByRole('link',{name:' Cart'});
-        this.signUpbtn = page.getByRole('link',{name:' Signup / Login'});
-        this.testcasebtn = page.getByRole('link',{name:' Test Cases'}).first();
-        this.contactUsbtn = page.getByRole('link',{name:' Contact us'});
+        this.homeButton = page.getByRole('link',{name:' Home'});
+        this.productButton = page.getByRole('link',{name:' Products'});
+        this.cartButton = page.getByRole('link',{name:' Cart'});
+        this.signUpButton = page.getByRole('link',{name:' Signup / Login'});
+        this.testCaseButton = page.getByRole('link',{name:' Test Cases'});
+        this.contactUsButton = page.getByRole('link',{name:' Contact us'});
     
         
     }
 
-    async visitPage(){
-        await this.page.goto('https://automationexercise.com/');
+    //Navigate to Homepage
+    async visitHomePage(){
+        await this.page.goto('/');
+
     }
 
-    async verifyPage(){
-        await expect(this.homebtn).toBeVisible();
+    //Verify Homepage and fetch Title of Page
+    async verifyHomePage(){
+        await expect(this.homeButton).toBeVisible();
         console.log("The title of Page:", await this.page.title());
-    }
-    async clickCart(){
-        await this.cartbtn.click();
+  
+    };
+
+    //Click on Cart Button available at Header
+    async clickCartButton(){
+        await this.cartButton.click();
+
 
     }
     
-    async clickLoginSignupbtn(){
-        await this.signUpbtn.click();
+    //Click Login/Signup Button available at Header of Homepage
+    async clickLoginSignupButton(){
+        await this.signUpButton.click();
     }
 
-    async clickContactus(){
-        await this.contactUsbtn.click();
+    //Click Contact Us Button available in Header
+    async clickContactUs(){
+        await this.contactUsButton.click();
+
     }
-    async clickproductBtn(){
-        await this.productbtn.click();
+
+    //Click Product Button
+    async clickProductButton(){
+        await this.productButton.click();
     }
     
-    async clickCartBtn(){
-        await this.cartbtn.click();
+    //Click Cart Button
+    async clickCartButton(){
+        await this.cartButton.click();
     }
 }
+
+export default homePage;

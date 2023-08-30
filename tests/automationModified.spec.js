@@ -1,25 +1,29 @@
+//Import all page and test method
 import { test } from '@playwright/test';
-import homePage from './homePage';
-import loginPage from './loginPage';
-import productPage from './productPage';
-import cartPage from './cartPage';
+import homePage from '../pages/homePageModified';
+import loginPage from '../pages/loginPageModified';
+import productPage from '../pages/productPageModified';
+import cartPage from '../pages/cartPageModified';
+
+let homeP, loginP, productP, cartP;
 
 
 
 test.beforeEach(async ({ page }) => {
 
-  const homeP= new homePage(page);
+  // Created Instances for all
+  homeP= new homePage(page);
+  loginP= new loginPage(page);
+  productP= new productPage(page);
+  cartP= new cartPage(page);
 
     //Visiting to site 
     await homeP.visitHomePage();
   });
 
-test('Test case: using Page Object Model', async ({ page }) => {
+test('Test case: Framework using Page Object Model', async () => {
 
-    const homeP= new homePage(page);
-    const loginP= new loginPage(page);
-    const productP= new productPage(page);
-    const cartP= new cartPage(page);
+
 
     //Verify the Page
     await homeP.verifyHomePage();
@@ -30,16 +34,9 @@ test('Test case: using Page Object Model', async ({ page }) => {
     //Verify the heading of the Page
     await loginP.verifyLoginHeading();
 
-    //Enter the Username
+    //Enter the Username and Password 
     await loginP.fillUsername();
-      // .fillpassword()
-      // .clickloginBtn();
-    
-      
-
-    // // //Enter the password
     await loginP.fillPassword();
-    //   .clickloginBtn();
 
     // //Clicking on Login button
     await loginP.clickLoginButton();
@@ -85,9 +82,8 @@ test('Test case: using Page Object Model', async ({ page }) => {
 
 
 });
-test.afterEach(async ({ page }) => {
+test.afterEach(async ({page}) => {
 
-    const loginP= new loginPage(page);
     //Clicking on Logout Button available in Login page for Logged in User
     await loginP.clickLogoutButton();
 

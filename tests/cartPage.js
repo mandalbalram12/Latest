@@ -1,35 +1,43 @@
-const { expect } = require('@playwright/test');
-exports.cartPage= class cartPage{
+import { expect } from '@playwright/test';
+class cartPage{
     constructor(page){
         this.page= page;
-        this.homebtn2 = page.getByRole('link',{name:'Home'}).last();
-        this.shoppingCart = page.getByText('Shopping Cart');
-        this.checkoutBtn = page.locator('.btn btn-default.check_out');
+        //Elements locator in Cart Page
+        this.cartHomeButton = page.getByRole('link',{name:'Home'});
+        this.shoppingCart = page.locator('li[class="active"]');
+        this.checkoutButton = page.locator('.btn btn-default.check_out');
         this.cartInfo = page.locator('#cart_info');
         this.productInfo = page.getByRole('link',{name:'Green Side Placket Detail T-Shirt'});
-        this.productremove = page.locator('.cart_delete');
-        this.emptyCart = page.getByText('Cart is empty!');
+        this.productRemove = page.locator('.cart_delete');
+        this.emptyCart = page.locator('//p//b');
     }
 
-    async verifycartelements(){
-        await expect(this.homebtn2).toBeVisible();
+    //Verify Cart elements are available
+    async verifyCartElements(){
+        await expect(this.cartHomeButton.last()).toBeVisible();
         await expect(this.shoppingCart).toBeVisible();
         console.log("Verified the Elements in Cart Page");
 
     }
 
-    async verifyaddedProduct(){
+    //Verify added Produuct in Cart
+    async verifyAddedProduct(){
         await expect(this.productInfo).toBeVisible();
         console.log('Verified the Added product in Cart Page');
+
     }
 
+    //Remove added product from Cart
     async removeProduct(){
-        await this.productremove.click();
+        await this.productRemove.click();
+
     }
     
-    async verifyemptyCart(){
-        await expect(this.emptyCart).toBeVisible();
+    //Verify empty cart after removal of Added item
+    async verifyEmptyCart(){
+        await expect(this.emptyCart).toContainText('Cart is empty!');
         console.log('Verified the Cart is EMpty after Removing an item');
     }
 
 }
+export default cartPage;

@@ -3,8 +3,9 @@ import { expect } from "@playwright/test";
 
 //Class CustomActions
 class CustomActions {
-    constructor(page) {
+    constructor(page,element) {
       this.page = page;
+      this.element= element;
     }
   
     /**customGoto method for navigating site
@@ -26,7 +27,7 @@ class CustomActions {
     /**custom type method for type action(enter characters one by one)
     taking two parameter @element as locator and @text as string
     */
-    async customType(element, text) {
+    async customType(element,text) {
       await element.type(text);
       return this;
     }
@@ -34,9 +35,9 @@ class CustomActions {
     /**customFill method for fill action(enter characters in one step)
     taking two parameter @element as locator and @text as string
     */
-    async customFill(element, text) {
+    async customFill(element,text) {
         await element.fill(text);
-        return this;
+                return this;
       }
   
     /**customClear method for Clear action
@@ -61,17 +62,20 @@ class CustomActions {
     async customVisible(element) {
       await expect(element).toBeVisible();
       return this;
+
     }
+
 
     /**customContainText method for assertion that element contains text by
     taking @element as parameter for locator
     In this method first it store the text in @elementText as string and compares with @Text passed as parameter
     */    
-    async customContainText(element, text) {
+    async customContainText(element,text) {
         const elementText = await element.textContent();
         expect(elementText).toContain(text);
         return this;
-      }
+    }
+
   }
   
   //Export customActions

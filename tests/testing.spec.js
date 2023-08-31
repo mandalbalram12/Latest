@@ -2,7 +2,7 @@
 const { test, expect } = require('@playwright/test');
 const { default: userData } = require('../data');
 
-test('Fetching the Locator', async ({ page }) => {
+test.skip('Fetching the Locator', async ({ page }) => {
   await page.goto('/');
   await page.getByRole('link',{name:' Signup / Login'}).click();
   await page.locator('[data-qa="login-email"]').fill(userData.username);

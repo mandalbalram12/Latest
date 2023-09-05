@@ -1,3 +1,4 @@
+//Import all pages and test 
 import LoginPage from '../pagesClickup/loginClickUp';
 import Filter01 from '../pagesClickup/filter01';
 import HomePage from '../pagesClickup/homePageClickUp';
@@ -258,12 +259,3 @@ test('Testcase03: Verify the personal info', async ({ page }) => {
 
 });
 
-test.afterAll(async ({ page }) => {
-
-  userSet = new userSetting(page);
-
-  //Logout the User
-  userSet.clickDropdownButton();
-  userSet.clickLogoutButton();
-
-});

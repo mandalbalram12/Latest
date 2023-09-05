@@ -59,7 +59,7 @@ class CustomActions {
     */    
     async customVisible(element) {
       await expect(element).toBeVisible();
-      console.log("Verified ELement is Visible");
+      console.log("Verified Element is Visible");
 
     }
 
@@ -68,7 +68,7 @@ class CustomActions {
     */    
     async customNotVisible(element) {
       await expect(element).not.toBeVisible();
-      console.log("Verified ELement is Not Visible");
+      console.log("Verified Element is Not Visible");
 
     }
 
@@ -77,7 +77,7 @@ class CustomActions {
     */    
     async customToBeDisabled(element) {
       await expect(element).toBeDisabled();
-      console.log("Verified ELement is Disabled");
+      console.log("Verified Element is Disabled");
 
     }    
 
@@ -91,9 +91,9 @@ class CustomActions {
         console.log('Verified the Text');
     }
 
-    async customLocator(element){
-      this.page.element
-    }
+    // async customLocator(element){
+    //   this.page.element
+    // }
 
   }
   

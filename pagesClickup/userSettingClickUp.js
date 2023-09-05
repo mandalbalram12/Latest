@@ -1,5 +1,6 @@
 //import customAction class to access methods
 import CustomActions from "../webElementActions";
+import { expect } from "@playwright/test";
 class userSetting extends CustomActions{
 
     constructor(page){
@@ -25,6 +26,7 @@ class userSetting extends CustomActions{
 
     //Click on Dropdown Button
     async clickDropdownButton(){
+        
         
         await this.customClick(this.dropdownButton);
     }
@@ -72,7 +74,8 @@ class userSetting extends CustomActions{
 
     //Verify the Added Color
     async verifyAddColor(){
-        await this.customToHaveCSS(this.addcolor,'background-color','rgba(0, 0, 0, 0)');
+        //await this.customToHaveCSS(this.addcolor,'background-color','rgba(0, 0, 0, 0)');
+        await expect(this.addcolor).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
 
     }
 
@@ -126,6 +129,7 @@ class userSetting extends CustomActions{
 
     //Click on Logout Button
     async clickLogoutButton(){
+        // await this.page.waitForLoadState('networkidle');
         await this.customClick(this.logoutButton);
     
     }

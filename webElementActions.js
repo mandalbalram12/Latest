@@ -3,9 +3,9 @@ import { expect } from "@playwright/test";
 
 //Class CustomActions
 class CustomActions {
-    constructor(page,element) {
+    constructor(page) {
       this.page = page;
-      this.element= element;
+      // this.element= element;
     }
   
     /**customGoto method for navigating site
@@ -13,15 +13,14 @@ class CustomActions {
     */
     async customGoto(url) {
       await this.page.goto(url);
-      return this;
+  
     }
 
     /**customClick method for Click action
     taking @element as parameter for locator
     */
     async customClick(element) {
-      await element.click();
-      return this;
+      await element.click({force:true});
     }
   
     /**custom type method for type action(enter characters one by one)
@@ -29,7 +28,7 @@ class CustomActions {
     */
     async customType(element,text) {
       await element.type(text);
-      return this;
+
     }
 
     /**customFill method for fill action(enter characters in one step)
@@ -37,7 +36,6 @@ class CustomActions {
     */
     async customFill(element,text) {
         await element.fill(text);
-                return this;
       }
   
     /**customClear method for Clear action
@@ -45,7 +43,7 @@ class CustomActions {
     */
     async customClear(element) {
       await element.clear();
-      return this;
+ 
     }
   
     /**customHover method for mouse hovering action
@@ -53,7 +51,7 @@ class CustomActions {
     */
     async customHover(element) {
       await element.hover();
-      return this;
+
     }
   
     /**customVisible for assertion that element is visible by
@@ -61,10 +59,27 @@ class CustomActions {
     */    
     async customVisible(element) {
       await expect(element).toBeVisible();
-      return this;
+      console.log("Verified ELement is Visible");
 
     }
 
+    /**customNotVisible for assertion that element is not visible by
+    taking @element as parameter for locator
+    */    
+    async customNotVisible(element) {
+      await expect(element).not.toBeVisible();
+      console.log("Verified ELement is Not Visible");
+
+    }
+
+    /**customToBeDisabled for assertion that element is visible by
+    taking @element as parameter for locator
+    */    
+    async customToBeDisabled(element) {
+      await expect(element).toBeDisabled();
+      console.log("Verified ELement is Disabled");
+
+    }    
 
     /**customContainText method for assertion that element contains text by
     taking @element as parameter for locator
@@ -73,7 +88,11 @@ class CustomActions {
     async customContainText(element,text) {
         const elementText = await element.textContent();
         expect(elementText).toContain(text);
-        return this;
+        console.log('Verified the Text');
+    }
+
+    async customLocator(element){
+      this.page.element
     }
 
   }

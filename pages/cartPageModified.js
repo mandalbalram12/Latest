@@ -9,13 +9,13 @@ class cartPage extends CustomActions{
         this.page= page;
 
         /** Elements locator in Cart Page */
-        cartHomeButton = this.page.getByRole('link',{name:'Home'});
-        shoppingCart = this.page.locator('li[class="active"]');
-        checkoutButton = this.page.locator('.btn.btn-default.check_out');
-        cartInfo = this.page.locator('#cart_info');
-        productInfo = this.page.getByRole('link',{name:'Green Side Placket Detail T-Shirt'});
-        productRemove = this.page.locator('.cart_delete');
-        emptyCart = this.page.locator('//p//b');
+        this.cartHomeButton = this.page.getByRole('link',{name:'Home'});
+        this.shoppingCart = this.page.locator('li[class="active"]');
+        this.checkoutButton = this.page.locator('.btn.btn-default.check_out');
+        this.cartInfo = this.page.locator('#cart_info');
+        this.productInfo = this.page.getByRole('link',{name:'Green Side Placket Detail T-Shirt'});
+        this.productRemove = this.page.locator('.cart_delete');
+        this.emptyCart = this.page.locator('//p//b');
 
     }    
 

@@ -1,8 +1,8 @@
 import { test } from '@playwright/test';
-import homePage from './homePage';
-import loginPage from './loginPage';
-import productPage from './productPage';
-import cartPage from './cartPage';
+import homePage from '../pages/homePage';
+import loginPage from '../pages/loginPage';
+import productPage from '../pages/productPage';
+import cartPage from '../pages/cartPage';
 
 
 

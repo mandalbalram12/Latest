@@ -12,8 +12,8 @@ class userSetting extends CustomActions{
         this.mySetting = page.getByRole('link', {name: 'My Settings'});
         this.headingMySetting = page.getByRole('heading', {name: 'My Settings'},{ timeout: 60000 });
         this.profileIcon = page.locator('[data-test="profile-settings__empty"]');
-        this.spaceColor = page.getByTitle('Space color');
-        this.addcolor = page.locator('[data-test="color-picker-panel__preset-color-#F31D2F"]');
+        this.spaceColor = page.locator('.cu-dropdown-list-title.cu-avatar-picker__title');
+        this.addcolor = page.locator('[data-test="avatar-color-option-#dc646a"]');
         this.modalspacecolor = page.getByRole('heading', {name: 'My Settings'});
         this.addedColor = page.locator('[data-test="profile-settings__empty"]');
         this.addCustomAvatar = page.locator('[data-test="avatar-picker__uploader-trigger"]');
@@ -75,7 +75,7 @@ class userSetting extends CustomActions{
     //Verify the Added Color
     async verifyAddColor(){
         //await this.customToHaveCSS(this.addcolor,'background-color','rgba(0, 0, 0, 0)');
-        await expect(this.addcolor).toHaveCSS('background-color','rgba(0, 0, 0, 0)');
+        await expect(this.addcolor).toHaveCSS('background','rgb(220, 100, 106)');
 
     }
 

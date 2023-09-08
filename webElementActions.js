@@ -50,7 +50,7 @@ class CustomActions {
     taking @element as parameter for locator
     */
     async customHover(element) {
-      await element.hover();
+      await element.hover({TimeRanges:20000});
 
     }
   

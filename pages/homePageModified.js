@@ -8,12 +8,12 @@ class homePage extends CustomActions{
             /**Locators available in homePage*/
         super();
         this.page = page;
-        this.homeButton= page.locator('link',{name:' Home'});
-        this.productButton = page.locator('link',{name:' Products'});
-        this.cartButton = page.locator('link',{name:' Cart'});
-        this.signUpButton = page.locator('link',{name:' Signup / Login'});
-        this.testCaseButton = page.locator('link',{name:' Test Cases'});
-        this.contactUsButton = page.locator('link',{name:' Contact us'});
+        this.homeButton= page.getByRole('link',{name:' Home'});
+        this.productButton = page.getByRole('link',{name:' Products'});
+        this.cartButton = page.getByRole('link',{name:' Cart'});
+        this.signUpButton = page.getByRole('link',{name:' Signup / Login'});
+        this.testCaseButton = page.getByRole('link',{name:' Test Cases'});
+        this.contactUsButton = page.getByRole('link',{name:' Contact us'});
         
     }
 
@@ -27,7 +27,7 @@ class homePage extends CustomActions{
     /**Verify Homepage and fetch Title of Page */
     async verifyHomePage(){
  
-        //await this.customVisible(this.homeButton);
+        await this.customVisible(this.homeButton);
         console.log('Verified')
         return this;
     };

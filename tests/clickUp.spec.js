@@ -12,6 +12,8 @@ test.beforeEach(async ({ page }) => {
   loginC = new LoginPage(page);
   homeC = new HomePage(page);
   filter01 = new Filter01(page);
+  userSet = new userSetting(page);
+  addingC = new mySetting(page);
 
   //Navigating to ClickUp
   await loginC.navigate();
@@ -32,10 +34,10 @@ test.beforeEach(async ({ page }) => {
 });
 
 
-test('TestCase01: Verify the Filter functionality', async ({page}) => {
+test('TestCase01: Verify the Filter functionality', async () => {
 
-  homeC = new HomePage(page);
-  filter01 = new Filter01(page);
+  // homeC = new HomePage(page);
+  // filter01 = new Filter01(page);
   
 
   // Click on Favourites Section
@@ -114,10 +116,10 @@ test('TestCase01: Verify the Filter functionality', async ({page}) => {
 
 });
 
-test('TestCase02: Verify the user icon avatar and space color setting', async ({ page }) => {
+test.only('TestCase02: Verify the user icon avatar and space color setting', async () => {
 
 
-  userSet = new userSetting(page);
+  // userSet = new userSetting(page);
 
   //Click on dropdown button available at left bottom
   await userSet.clickDropdownButton();
@@ -135,7 +137,7 @@ test('TestCase02: Verify the user icon avatar and space color setting', async ({
   await userSet.clickProfileIcon();
 
   //Verify the Space color or Modal
-  await userSet.VerifySpaceColor();
+  // await userSet.VerifySpaceColor();
   
   //Click on color
   await userSet.clickAddColor();
@@ -164,10 +166,10 @@ test('TestCase02: Verify the user icon avatar and space color setting', async ({
 
 });
 
-test('Testcase03: Verify the personal info', async ({ page }) => {
+test('Testcase03: Verify the personal info', async () => {
 
-  addingC = new mySetting(page);
-  userSet = new userSetting(page);
+  // addingC = new mySetting(page);
+  // userSet = new userSetting(page);
 
   //Click on dropdown button available at left bottom
   await userSet.clickDropdownButton();

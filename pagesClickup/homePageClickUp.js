@@ -30,7 +30,8 @@ class HomePage extends CustomActions{
 
     //Click on Project 01 option available in favourite section
     async clickProject02(){
-      await this.customClick(this.favoriteOptions);
+      await this.customClick(this.favoriteOptions.filter({hasText:'Project 2'}));
+      await this.customVisible(this.selectedFavoriteOption);
     }
 
     //verify selected favorite Option

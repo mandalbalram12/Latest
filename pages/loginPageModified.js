@@ -10,12 +10,12 @@ class loginPage extends CustomActions{
         super(page);
         this.page= page;
         /**Element's locator available in Login Page */
-        this.loginHeading = this.page.getByRole('heading',{name:'Login to your account'});
-        this.inputUsername = this.page.locator('[data-qa="login-email"]');
-        this.inputPassowrd = this.page.locator('[data-qa="login-password"]');
-        this.loginButton = this.page.locator('[data-qa="login-button"]');
-        this.loggedAsUser = this.page.locator('//a//b');
-        this.logOutUser = this.page.getByRole('link',{name:' Logout'});
+        this.loginHeading = page.getByRole('heading',{name:'Login to your account'});
+        this.inputUsername = page.locator('[data-qa="login-email"]');
+        this.inputPassowrd = page.locator('[data-qa="login-password"]');
+        this.loginButton = page.locator('[data-qa="login-button"]');
+        this.loggedAsUser = page.locator('//a//b');
+        this.logOutUser = page.getByRole('link',{name:' Logout'});
     }
 
 

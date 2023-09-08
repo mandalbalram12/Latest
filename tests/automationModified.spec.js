@@ -22,9 +22,7 @@ test.beforeEach(async ({ page }) => {
   });
 
 test('Test case: Framework using Page Object Model', async () => {
-
-
-
+    
     //Verify the Page
     await homeP.verifyHomePage();
 

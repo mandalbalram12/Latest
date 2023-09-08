@@ -11,14 +11,14 @@ class productPage extends CustomActions{
         this.page= page;
 
         /** Elements Locator available in Product Page */
-        this.productSearchBox = this.page.getByRole('textbox',{name:'Search Product'});
-        this.clickProductSearchButton = this.page.locator('#submit_search');
-        this.productItem = this.page.locator('//div//p');
-        this.productImage = this.page.getByAltText('ecommerce website products');
-        this.addToCartButton = this.page.locator('.add-to-cart');
-        this.modalConfirmationProduct = this.page.locator('//div//p');
-        this.continueShopping = this.page.getByRole('button',{name:'Continue Shopping'});
-        this.viewCart = this.page.locator('//p//a');
+        this.productSearchBox = page.getByRole('textbox',{name:'Search Product'});
+        this.clickProductSearchButton = page.locator('#submit_search');
+        this.productItem = page.locator('//div//p');
+        this.productImage = page.getByAltText('ecommerce website products');
+        this.addToCartButton = page.locator('.btn.btn-default.add-to-cart');
+        this.modalConfirmationProduct = page.locator('//div//p');
+        this.continueShopping = page.getByRole('button',{name:'Continue Shopping'});
+        this.viewCart = page.locator('//p//a');
     }
 
     //Search item with Searchbox
@@ -38,7 +38,7 @@ class productPage extends CustomActions{
     //Adding Product to Cart
     async chooseProduct(){
         await this.customHover(this.productImage);
-        await this.customClick(this.addToCartButton.nth(1));
+        await this.customClick(this.addToCartButton.nth(0));
         return this;
     }
 

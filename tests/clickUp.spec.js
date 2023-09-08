@@ -34,7 +34,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 
-test('TestCase01: Verify the Filter functionality', async () => {
+test('TestCase01: @Smoke Verify the Filter functionality', async () => {
 
   // homeC = new HomePage(page);
   // filter01 = new Filter01(page);
@@ -116,7 +116,7 @@ test('TestCase01: Verify the Filter functionality', async () => {
 
 });
 
-test.only('TestCase02: Verify the user icon avatar and space color setting', async () => {
+test('TestCase02: @Regression Verify the user icon avatar and space color setting', async () => {
 
 
   // userSet = new userSetting(page);
@@ -166,7 +166,7 @@ test.only('TestCase02: Verify the user icon avatar and space color setting', asy
 
 });
 
-test('Testcase03: Verify the personal info', async () => {
+test('Testcase03: @Smoke Verify the personal info', async () => {
 
   // addingC = new mySetting(page);
   // userSet = new userSetting(page);

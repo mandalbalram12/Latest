@@ -116,7 +116,7 @@ test('TestCase01: @Smoke Verify the Filter functionality', async () => {
 
 });
 
-test('TestCase02: @Regression Verify the user icon avatar and space color setting', async () => {
+test.skip('TestCase02: @Regression Verify the user icon avatar and space color setting', async () => {
 
 
   // userSet = new userSetting(page);

@@ -5,7 +5,6 @@ import { expect } from "@playwright/test";
 class CustomActions {
     constructor(page) {
       this.page = page;
-      // this.element= element;
     }
   
     /**customGoto method for navigating site
@@ -20,7 +19,7 @@ class CustomActions {
     taking @element as parameter for locator
     */
     async customClick(element) {
-      await element.click({force:true});
+      await element.click();
     }
   
     /**custom type method for type action(enter characters one by one)
@@ -46,54 +45,67 @@ class CustomActions {
  
     }
   
-    /**customHover method for mouse hovering action
-    taking @element as parameter for locator
-    */
+    /**
+     *customHover method for mouse hovering action
+     * @param {string} element 
+     */
     async customHover(element) {
       await element.hover({TimeRanges:20000});
 
     }
-  
-    /**customVisible for assertion that element is visible by
-    taking @element as parameter for locator
-    */    
+     
+   /**customVisible for assertion that element is visible
+    * @param {string} element 
+    */
     async customVisible(element) {
       await expect(element).toBeVisible();
       console.log("Verified Element is Visible");
 
     }
-
-    /**customNotVisible for assertion that element is not visible by
-    taking @element as parameter for locator
-    */    
+ 
+   /** customNotVisible for assertion that element is not visible
+    * @param {string} element 
+    */  
     async customNotVisible(element) {
       await expect(element).not.toBeVisible();
       console.log("Verified Element is Not Visible");
 
     }
 
-    /**customToBeDisabled for assertion that element is visible by
-    taking @element as parameter for locator
-    */    
+   /** customToBeDisabled for assertion that element is disable
+    *  @param {string} element 
+    */  
     async customToBeDisabled(element) {
       await expect(element).toBeDisabled();
       console.log("Verified Element is Disabled");
 
     }    
-
-    /**customContainText method for assertion that element contains text by
-    taking @element as parameter for locator
-    In this method first it store the text in @elementText as string and compares with @Text passed as parameter
-    */    
+   
+    /** customContainText method for assertion that element contains text by
+     * @param {string} element, In this method first it store the text in @elementText as string and compares with
+     * @param {string} text 
+     */
     async customContainText(element,text) {
         const elementText = await element.textContent();
         expect(elementText).toContain(text);
         console.log('Verified the Text');
     }
 
-    // async customLocator(element){
-    //   this.page.element
-    // }
+
+    async customToBeTruthy(element,text) {
+      const elementText = await element.textContent();
+      expect(elementText).toBeTruthy();
+  }
+
+  /**
+   * customGetTitle method to fetch the title of the page
+   */
+  async customGetTitle(){
+    await this.page.title();
+    console.log("Title of the page is",await this.page.title());
+   
+}
+
 
   }
   

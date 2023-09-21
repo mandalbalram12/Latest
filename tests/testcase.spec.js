@@ -1,11 +1,14 @@
 //Import all page and test method
-import { test } from '@playwright/test';
-import homePage from '../pages/homePageModified';
-import loginPage from '../pages/loginPageModified';
-import productPage from '../pages/productPageModified';
-import cartPage from '../pages/cartPageModified';
+import { test} from '@playwright/test';
+import homePage from '../pages/homePage';
+import loginPage from '../pages/loginPage';
+import productPage from '../pages/productPage';
+import finalpage from '../pages/cartPage';
+import loginByPass from '../pages/apiPage';
+// const cred = {userEmail:"anshika@gmail.com",userPassword:"Iamking@000"};
+// let loginToken;
 
-let homeP, loginP, productP, cartP;
+let homeP, loginP, productP, cartP, loginAPI;
 
 
 
@@ -15,17 +18,26 @@ test.beforeEach(async ({ page }) => {
     homeP= new homePage(page);
     loginP= new loginPage(page);
     productP= new productPage(page);
-    cartP= new cartPage(page);
+    cartP= new finalpage(page);
+    loginAPI = new loginByPass(page);
 
 
   });
 
 test('Testcase 01: Login using API ',async({}) => {
 
-  
-})  
+  // loginAPI = new loginByPass(page);
 
-test('Test case: Framework using Page Object Model', async ({}) => {
+// Login byPass with API
+await loginAPI.loginByPass();
+
+// Verify Logged In
+await loginAPI.verifyLoggedIn();
+
+  
+});
+
+test('Test case 02: Framework using Page Object Model', async ({}) => {
     
         
     //Visiting to site 
@@ -84,15 +96,8 @@ test('Test case: Framework using Page Object Model', async ({}) => {
     //Verify Empty Cart
     await cartP.verifyEmptyCart();
 
-
-
-
-});
-test.afterEach(async ({page}) => {
-
-
     //Clicking on Logout Button available in Login page for Logged in User
     await loginP.clickLogoutButton();
 
-    await page.close();
-  });
+
+});

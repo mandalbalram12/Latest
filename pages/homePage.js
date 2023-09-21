@@ -1,59 +1,64 @@
-import { expect } from '@playwright/test';
-class homePage{
+//Import CustomAction
+import CustomActions from '../webElementActions';
+
+//Inherit CustomActions 
+class homePage extends CustomActions{
     constructor(page){
 
-        //Elements Locator available in Home Page
+            /**Locators available in homePage*/
+        super();
         this.page = page;
-        this.homeButton = page.getByRole('link',{name:' Home'});
-        this.productButton = page.getByRole('link',{name:' Products'});
-        this.cartButton = page.getByRole('link',{name:' Cart'});
-        this.signUpButton = page.getByRole('link',{name:' Signup / Login'});
-        this.testCaseButton = page.getByRole('link',{name:' Test Cases'});
-        this.contactUsButton = page.getByRole('link',{name:' Contact us'});
-    
+        this.homeButton = ()=> page.getByRole('link',{name:' Home'});
+        this.productButton = ()=> page.getByRole('link',{name:' Products'});
+        this.cartButton = ()=> page.getByRole('link',{name:' Cart'});
+        this.signUpButton = ()=> page.getByRole('link',{name:' Signup / Login'});
+        this.testCaseButton = ()=> page.getByRole('link',{name:' Test Cases'});
+        this.contactUsButton = ()=> page.getByRole('link',{name:' Contact us'});
         
     }
+    
 
     //Navigate to Homepage
     async visitHomePage(){
-        await this.page.goto('/');
+        await this.customGoto('/');
+        return this;
 
     }
 
-    //Verify Homepage and fetch Title of Page
+    /**Verify Homepage and fetch Title of Page */
     async verifyHomePage(){
-        await expect(this.homeButton).toBeVisible();
-        console.log("The title of Page:", await this.page.title());
-  
+ 
+        await this.customVisible(this.homeButton());
+        console.log('Verified')
+        return this;
     };
 
     //Click on Cart Button available at Header
     async clickCartButton(){
-        await this.cartButton.click();
-
-
+        await this.customClick(this.cartButton());
+        return this;
     }
     
     //Click Login/Signup Button available at Header of Homepage
     async clickLoginSignupButton(){
-        await this.signUpButton.click();
+        await this.customClick(this.signUpButton());
+        return this;
     }
 
     //Click Contact Us Button available in Header
     async clickContactUs(){
-        await this.contactUsButton.click();
+        await this.customClick(this.contactUsButton());
+        return this;
 
     }
 
-    //Click Product Button
+    // //Click Product Button
     async clickProductButton(){
-        await this.productButton.click();
+        await this.customClick(this.productButton());
+        return this;
     }
     
-    //Click Cart Button
-    async clickCartButton(){
-        await this.cartButton.click();
-    }
 }
 
+//Export homePage
 export default homePage;

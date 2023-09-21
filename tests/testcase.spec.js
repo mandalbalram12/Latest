@@ -101,3 +101,9 @@ test('Test case 02: Framework using Page Object Model', async ({}) => {
 
 
 });
+
+test.afterEach(async ({page})=>{
+
+  // Closing page 
+  await page.close();
+  });

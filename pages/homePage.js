@@ -27,7 +27,6 @@ class homePage extends CustomActions{
 
     /**Verify Homepage and fetch Title of Page */
     async verifyHomePage(){
- 
         await this.customVisible(this.homeButton());
         console.log('Verified')
         return this;

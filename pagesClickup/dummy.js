@@ -24,5 +24,5 @@ class loginPage01 extends CustomActions{
         await this.customClick(this.loginButton);
     }
 }
-
-export default loginPage01;
+const loginObj = loginPage01
+export default loginObj;

@@ -33,7 +33,6 @@ class loginByPass extends CustomActions{
     async verifyLoggedIn(){
         await this.customGoto("https://rahulshettyacademy.com/client");
         await this.customGetTitle();
-        // console.log(`Title : ${await this.page.title()}`);
         await this.page.screenshot({path:'fullpage.png',fullPage:true});
     }
 }

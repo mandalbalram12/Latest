@@ -1,12 +1,12 @@
 // @ts-check
 const { test} = require('@playwright/test');
-import loginPage01 from '../pagesClickup/dummy';
+import loginObj from '../pagesClickup/dummy';
 
-test('Fetching the Locator', async ({ page }) => {
+test('Fetching the Locator', async ({}) => {
 
-  const login = new loginPage01(page);
+  // const login = new loginPage01(page);
   
-  await login.Naviagte();
-  await login.enterCredentials();
+  await loginObj.navigate();
+  await loginObj.enterCredentials();
 
 });

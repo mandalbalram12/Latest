@@ -9,7 +9,7 @@ class cartPage extends CustomActions{
         this.page= page;
 
         /** Elements locator in Cart Page */
-        this.cartHomeButton = ()=> page.getByRole('link',{name:'Home'});
+        this.cartHomeButton = ()=> page.locator('ol[class="breadcrumb"] li a');
         this.shoppingCart = ()=> page.locator('li[class="active"]');
         this.checkoutButton = ()=> page.locator('.btn.btn-default.check_out');
         this.cartInfo = ()=> page.locator('#cart_info');
@@ -21,8 +21,8 @@ class cartPage extends CustomActions{
 
     //Verify Cart elements are available
     async verifyCartElements(){
-        await this.customVisible(this.cartHomeButton().last());
-        await this.customVisible(this.shoppingCart());
+        await this.elementVisible(this.cartHomeButton());
+        await this.elementVisible(this.shoppingCart());
         console.log("Verified the Elements in Cart Page");
         return this;
 
@@ -30,7 +30,7 @@ class cartPage extends CustomActions{
 
     //Verify added Produuct in Cart
     async verifyAddedProduct(){
-        await this.customVisible(this.productInfo());
+        await this.elementVisible(this.productInfo());
         console.log('Verified the Added product in Cart Page');
         return this;
 
@@ -38,14 +38,14 @@ class cartPage extends CustomActions{
 
     //Remove added product from Cart
     async removeProduct(){
-        await this.customClick(this.productRemove());
+        await this.clickOnElement(this.productRemove());
         return this;
 
     }
     
     //Verify empty cart after removal of Added item
     async verifyEmptyCart(){
-        await this.customContainText(this.emptyCart(),'Cart is empty!');
+        await this.containText(this.emptyCart(),'Cart is empty!');
         console.log('Verified the Cart is EMpty after Removing an item');
         return this;
     }

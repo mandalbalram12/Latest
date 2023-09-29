@@ -1,5 +1,7 @@
 // Import expect assertion library from Playwright
-import { expect } from "@playwright/test";
+import {expect } from "@playwright/test";
+
+// import page
 
 //Class CustomActions
 class CustomActions {
@@ -7,112 +9,125 @@ class CustomActions {
       this.page = page;
     }
   
-    /**customGoto method for navigating site
-    taking @url as parameter
+   /**
+    * navigate method for navigating site
+    * @param {string} url 
     */
-    async customGoto(url) {
+    async navigate(url) {
+      // await this.page.goto(url);
       await this.page.goto(url);
   
     }
 
-    /**customClick method for Click action
-    taking @element as parameter for locator
-    */
+
    /**
-    * 
+    * clickOnElement method for Click action
     * @param {*} element 
+    * @param {boolean} force parameter to force the click
     */
-    async customClick(element) {
-      await element.click();
+    async clickOnElement(element,force = false) {
+      const options = force ? { force: true } : undefined;
+      await element.click(options);
     }
   
-    /**custom type method for type action(enter characters one by one)
-    taking two parameter @element as locator and @text as string
+  
+   /**
+    *typeOnElement method for type action(enter characters one by one)
+    * @param {*} element 
+    * @param {string} text 
     */
-    async customType(element,text) {
+    async typeOnELement(element,text) {
       await element.type(text);
 
     }
 
-    /**customFill method for fill action(enter characters in one step)
-    taking two parameter @element as locator and @text as string
+   /**
+    * fillOnElement method for fill action(enter characters in one step)
+    * @param {*} element 
+    * @param {string} text 
     */
-    async customFill(element,text) {
+    async fillOnElement(element,text) {
         await element.fill(text);
       }
   
-    /**customClear method for Clear action
-    taking @element as parameter for locator
+
+   /**
+    * clearOnElement method for Clear action
+    * @param {*} element 
     */
-    async customClear(element) {
+    async clearOnElement(element) {
       await element.clear();
  
     }
   
     /**
-     *customHover method for mouse hovering action
+     *hoverOnElement method for mouse hovering action
      * @param {string} element 
      */
-    async customHover(element) {
+    async hoverOnElement(element) {
       await element.hover({TimeRanges:20000});
 
     }
      
-   /**customVisible for assertion that element is visible
+   /**elementVisible for assertion that element is visible
     * @param {string} element 
     */
-    async customVisible(element) {
+    async elementVisible(element) {
       await expect(element).toBeVisible();
       console.log("Verified Element is Visible");
 
     }
  
-   /** customNotVisible for assertion that element is not visible
+   /** elementNotVisible for assertion that element is not visible
     * @param {string} element 
     */  
-    async customNotVisible(element) {
+    async elementNotVisible(element) {
       await expect(element).not.toBeVisible();
       console.log("Verified Element is Not Visible");
 
     }
 
-   /** customToBeDisabled for assertion that element is disable
+   /** elementToBeDisabled for assertion that element is disable
     *  @param {string} element 
     */  
-    async customToBeDisabled(element) {
+    async elementToBeDisable(element) {
       await expect(element).toBeDisabled();
       console.log("Verified Element is Disabled");
 
     }    
    
-    /** customContainText method for assertion that element contains text by
+    /** containText method for assertion that element contains text by
      * @param {string} element, In this method first it store the text in @elementText as string and compares with
      * @param {string} text 
      */
-    async customContainText(element,text) {
+    async containText(element,text) {
         const elementText = await element.textContent();
         expect(elementText).toContain(text);
         console.log('Verified the Text');
     }
 
+    /**
+     * elementToBeTruthy to check the value returns true 
+     * @param {string} element 
+     */
+        async elementToBeTruthy(element) {
+          await expect(element).toBeTruthy();
+      }
 
-    async customToBeTruthy(element,text) {
-      const elementText = await element.textContent();
-      expect(elementText).toBeTruthy();
-  }
 
-  /**
-   * customGetTitle method to fetch the title of the page
-   */
-  async customGetTitle(){
-    await this.page.title();
-    console.log("Title of the page is",await this.page.title());
-   
-}
+      /**
+       * getTitle method to fetch the title of the page
+       */
+      async getTitle(){
+        await this.page.title();
+        console.log("Title of the page is",await this.page.title());
+      
+      }
 
 
   }
   
   //Export customActions
   export default CustomActions;
+
   

@@ -20,44 +20,46 @@ class homePage extends CustomActions{
 
     //Navigate to Homepage
     async visitHomePage(){
-        await this.customGoto('/');
+        await this.navigate('/');
         return this;
 
     }
 
     /**Verify Homepage and fetch Title of Page */
     async verifyHomePage(){
-        await this.customVisible(this.homeButton());
+        await this.elementVisible(this.homeButton());
+        console.log(typeof(this.homeButton))
         console.log('Verified')
         return this;
     };
 
     //Click on Cart Button available at Header
     async clickCartButton(){
-        await this.customClick(this.cartButton());
+        await this.clickOnElement(this.cartButton());
         return this;
     }
     
     //Click Login/Signup Button available at Header of Homepage
     async clickLoginSignupButton(){
-        await this.customClick(this.signUpButton());
+        await this.clickOnElement(this.signUpButton());
         return this;
     }
 
     //Click Contact Us Button available in Header
     async clickContactUs(){
-        await this.customClick(this.contactUsButton());
+        await this.clickOnElement(this.contactUsButton());
         return this;
 
     }
 
     // //Click Product Button
     async clickProductButton(){
-        await this.customClick(this.productButton());
+        await this.clickOnElement(this.productButton());
         return this;
     }
     
 }
 
 //Export homePage
+// export const homePageObject = new homePage();
 export default homePage;

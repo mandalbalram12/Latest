@@ -18,7 +18,7 @@ class loginByPass extends CustomActions{
         {
           data: cred,
         })
-        expect(loginResponse.ok()).toBeTruthy();
+        this.elementToBeTruthy(loginResponse.ok())
         const loginJSONResp = await loginResponse.json();
         loginToken = loginJSONResp.token;
         console.log("Token is:", loginToken);
@@ -31,8 +31,8 @@ class loginByPass extends CustomActions{
 
     //Verify the login 
     async verifyLoggedIn(){
-        await this.customGoto("https://rahulshettyacademy.com/client");
-        await this.customGetTitle();
+        await this.navigate("https://rahulshettyacademy.com/client");
+        await this.getTitle();
         await this.page.screenshot({path:'fullpage.png',fullPage:true});
     }
 }

@@ -21,42 +21,45 @@ class loginPage extends CustomActions{
 
     //Verify the Login page after login
     async verifyLoginHeading(){
-        await this.customVisible(this.loginHeading());
+        await this.elementVisible(this.loginHeading());
         console.log('Verified the LoginPage');
         return this;
     
     }
 
     //Fill username
-    async fillUsername(){
-        await this.customFill(this.inputUsername(),userData.username);
+    async fillUsername(userData){
+        await this.fillOnElement(this.inputUsername(),userData.username);
         return this;
         
     }
 
+
     //Fill password
-    async fillPassword(){
-        await this.customFill(this.inputPassowrd(),userData.password);
+    async fillPassword(userData){
+        await this.fillOnElement(this.inputPassowrd(),userData.password);
         return this;
-    }
+    }    
+
+
 
     //Click login Button
     async clickLoginButton(){
-        await this.customClick(this.loginButton());
+        await this.clickOnElement(this.loginButton());
         return this;
         
     }
     
     //Verify logged in as User
     async verifyLoggedIn(){
-        await this.customContainText(this.loggedAsUser(),userData.user);
+        await this.containText(this.loggedAsUser(),userData.user);
         return this;
         
     }
 
     //Click on Logout Button
     async clickLogoutButton(){
-        await this.customClick(this.logOutUser());
+        await this.clickOnElement(this.logOutUser());
         console.log('User Logged Out');
         console.log('This test case is running successfully');
         return this;
